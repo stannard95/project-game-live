@@ -1,0 +1,31 @@
+body {
+	background-image: url('../images/test.png');
+	background-repeat: no-repeat;
+}
+
+.main-container {
+	border: solid black 2px;
+	width: 1400px;
+	height: 750px;
+	margin: 0 auto;
+}
+
+.inventory {
+	border: solid red 2px;
+	width: 90%;
+	height: 100px;
+	margin: 0 auto;
+}
+
+.inventory-box {
+	border: solid red 2px;
+	width: 100px;
+	height: 80px;
+	margin-left: 25px;
+	margin-right: 25px;
+	display: inline-block;
+	background-image: none;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
