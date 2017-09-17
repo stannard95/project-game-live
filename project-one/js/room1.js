@@ -17,6 +17,8 @@ $(function () {
    				item2 = $(this);
    				console.log(item2.attr('value'));
    				combine(item1, item2);
+   				item1 = null;
+   				item2 = null;
    			}
    		}
    		
@@ -96,7 +98,23 @@ function checkInventoryFree ($inventory) {
 
 // combines two objects together
 function combine (item1, item2) {
-	makeAlert('You combined ' + item1.attr('value') + ' and ' + item2.attr('value'));
+	var item1Value = item1.attr('value');
+	var item2Value = item2.attr('value');
+
+	// Combine pencil and paper for java message
+	if (item1Value === 'pencil' && item2Value === 'paper' ||
+		item1Value === 'paper' && item2Value === 'paper') {
+
+		makeAlert('You combined ' + item1Value + ' and ' + item2Value);
+		item1.css('border', 'solid black 2px');
+		item2.css('border', 'solid black 2px');
+
+		item1.css('background-image', 'url(../images/room1/paperCombined.png)');
+		item1.attr('value', 'java');
+		item2.css('background-image', 'none');
+		
+
+	}
 
 }
 

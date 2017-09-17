@@ -4,7 +4,7 @@
 	width: 1400px;
 	height: 750px;
 	margin: 0 auto;
-	background-image: url('../images/room1.png');
+	background-image: url('../images/room1/room1.png');
 	background-size: 1400px 750px;
 	background-repeat: no-repeat;
 }
@@ -76,7 +76,7 @@
 	position: absolute;
 	left: 300px;
 	top: 600px;
-	background-image: url('../images/pencil.png');
+	background-image: url('../images/room1/pencil.png');
 	background-repeat: no-repeat;
 	background-size: 80px 50px;
 	
@@ -90,13 +90,13 @@
 	position: absolute;
 	right: 250px;
 	top: 600px;
-	background-image: url('../images/paper.png');
+	background-image: url('../images/room1/paper.png');
 	background-repeat: no-repeat;
 	background-size: 50px 50px;
 }
 
 #eraserItem {
-	background-image: url('../images/eraser.png');
+	background-image: url('../images/room1/eraser.png');
 	background-repeat: no-repeat;
 	background-size: 50px 50px;
 	display: none;
