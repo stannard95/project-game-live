@@ -1,31 +1,42 @@
 body {
-	background-image: url('../images/test.png');
-	background-repeat: no-repeat;
+	
 }
 
 .main-container {
-	border: solid black 2px;
+	border: solid black 4px;
 	width: 1400px;
 	height: 750px;
 	margin: 0 auto;
+	background-image: url('../images/room1.png');
+	background-size: 1400px 750px;
+	background-repeat: no-repeat;
 }
 
 .inventory {
-	border: solid red 2px;
+	border: solid black 4px;
 	width: 90%;
-	height: 100px;
+	height: 70px;
 	margin: 0 auto;
+	background-color: grey;
+
 }
 
 .inventory-box {
-	border: solid red 2px;
-	width: 100px;
-	height: 80px;
-	margin-left: 25px;
+	border: solid black 2px;
+	width: 90px;
+	height: 60px;
+	margin-left: 32px;
 	margin-right: 25px;
+	background-color: brown;
 	display: inline-block;
 	background-image: none;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
 
+#pencilItem {
+	border: solid 2px red;
+	width: 70px;
+	height: 60px;
+
+}
