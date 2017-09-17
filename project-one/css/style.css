@@ -15,7 +15,7 @@
 	height: 70px;
 	margin: 0 auto;
 	background-color: brown;
-	opacity: 0.9;
+	opacity: 0.8;
 
 }
 
@@ -30,6 +30,29 @@
 	background-image: none;
 	background-size: 90%;
 	background-repeat: no-repeat;
+}
+
+.laptopInput {
+	width: 400px;
+	height: 50px;
+	position: absolute;
+	left: 450px;
+	top: 200px;
+	font-size: 30px;
+	border: solid black 4px;
+}
+
+
+.enterButton {
+	display: inline-block;
+	border: solid black 4px;
+	background-color: white;
+	position: absolute;
+	left: 857px;
+	top: 220px;
+	width: 100px;
+	height: 25px;
+
 }
 
 //Clickables in room 1

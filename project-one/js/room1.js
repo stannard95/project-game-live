@@ -8,7 +8,16 @@ $(function () {
 
    		//Combining items
    		if ($(this).css('background-image') !== 'none') {
-   			$(this).css('border', 'solid yellow 2px');
+
+   			// If the item is java
+   			if ($(this).attr('value') === 'java') {
+
+   				makeAlert('The paper message reveals the word: java. \nMaybe its a password?');
+
+   			} else {
+   				$(this).css('border', 'solid yellow 2px');
+   			}
+
    			if (item1 === null) {
    				item1 = $(this);
    				console.log(item1.attr('value'));
@@ -40,6 +49,16 @@ $(function () {
    	var $laptop = $('#laptopItem');
    	$laptop.on('click', function(event) {
    		console.log('yeah boi, laptop');
+   		var $form = $("<form></form>");
+   		$form.append("<input type='text' class='laptopInput'/>");
+   		$form.append($("<button class=enterButton>Enter</button>"));
+   		$('.main-container').append($form);
+
+   		$('.enterButton').on('click', function (event) {
+   			var input = $(".laptopInput").val();
+   			checkInputValid(input);
+   		});
+   		
 
    	});
 
@@ -58,9 +77,39 @@ $(function () {
    	var $doorLock = $('#doorLock');
    	$doorLock .on('click', function(event) {
    		console.log('yeah boi, door lock');
+   		var $form = $("<form></form>");
+   		$form.append("<input type='text' class='laptopInput'/>");
+   		$form.append($("<button class=enterButton>Enter</button>"));
+   		$('.main-container').append($form);
+   		$('.enterButton').on('click', function (event) {
+   			var input = $(".laptopInput").val();
+   			checkDoorValid(input);
+   		});
    	});
 });
 
+function checkDoorValid(text) {
+	if (text === '1950') {
+		makeAlert('The door unlocks!');
+	}
+
+	else {
+		makeAlert('The door remains locked');
+	}
+}
+
+function checkInputValid(text) {
+	if (text === 'java') {
+		makeAlert('Try some numbers instead of letters');
+	
+	} else if (text === '101221') {
+		makeAlert('Welcome to your computer\nThe door lock is the year the Turing Test was developed.');
+	}
+
+	else {
+		makeAlert('Try something else');
+	}
+}
 
 // Adds an item to the inventory
 function addItem (item, $inventory) {
@@ -103,7 +152,7 @@ function combine (item1, item2) {
 
 	// Combine pencil and paper for java message
 	if (item1Value === 'pencil' && item2Value === 'paper' ||
-		item1Value === 'paper' && item2Value === 'paper') {
+		item1Value === 'paper' && item2Value === 'pencil') {
 
 		makeAlert('You combined ' + item1Value + ' and ' + item2Value);
 		item1.css('border', 'solid black 2px');
@@ -113,13 +162,12 @@ function combine (item1, item2) {
 		item1.attr('value', 'java');
 		item2.css('background-image', 'none');
 		
-
 	}
 
 }
 
 
-//Makes an alert from the text given
+// Makes an alert from the text given
 function makeAlert (text) {
 	alert(text);
 }
