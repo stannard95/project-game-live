@@ -3,6 +3,7 @@ $(function () {
 	var $inventory = $('.inventory-box');
    	$inventory.on('click', function(event) {
    		console.log('Clicked');
+   		makeAlert('This is a ' + $(this).attr('value'));
    		
    	});
 
@@ -44,20 +45,17 @@ $(function () {
 
 //Adds an item to the inventory
 function addItem (item, $inventory) {
+	var inventoryCheck = checkInventoryFree($inventory);
 
-	// if (checkInventoryFree(inventoryBox)) {
-	if (checkInventoryFree($inventory) === '') {
+	if (inventoryCheck === '') {
 		makeAlert('Inventory is full');
-	}
-
-	else {
-		checkInventoryFree($inventory).css("background-image", item.css("background-image"));
-	}
 	
-	// } else {
-	// 	makeAlert('That place is already filled!');
-	// }
-	
+	} else {
+		inventoryCheck.css("background-image", item.css("background-image"));
+		inventoryCheck.attr('value', item.attr('value'));
+		console.log('Item is: ' + inventoryCheck.attr('value'));
+		item.hide();
+	}
 }
 
 
@@ -65,11 +63,11 @@ function addItem (item, $inventory) {
 function checkInventoryFree($inventory) {
 	for (var i = 0; i < $inventory.length; i++) {
 		var inventoryBox = $inventory.eq(i);
-		console.log
+
 		if (inventoryBox.css("background-image") === 'none') {
 			break;
-		}
-		else {
+		
+		} else {
 			inventoryBox = '';
 		}
 	}

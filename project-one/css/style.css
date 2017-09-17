@@ -41,7 +41,7 @@
 }
 
 #door {
-	border: solid red 2px;
+	/*border: solid red 2px;*/
 	width: 45px;
 	height: 35px;
 	position: absolute;
@@ -51,7 +51,7 @@
 }
 
 #doorLock {
-	border: solid blue 2px;
+	/*border: solid blue 2px;*/
 	width: 170px;
 	height: 50px;
 	left: 300px;
@@ -60,7 +60,7 @@
 }
 
 #drawersItem {
-	border: solid 2px red;
+	/*border: solid 2px red;*/
 	width: 150px;
 	height: 200px;
 	position: absolute;
@@ -69,8 +69,8 @@
 }
 
 #pencilItem {
-	border: solid 2px red;
-	width: 70px;
+	/*border: solid 2px red;*/
+	width: 100px;
 	height: 60px;
 	float: left;
 	position: absolute;
@@ -78,12 +78,12 @@
 	top: 600px;
 	background-image: url('../images/pencil.png');
 	background-repeat: no-repeat;
-	background-size: 60px 60px;
+	background-size: 80px 50px;
 	
 }
 
 #paperItem {
-	border: solid 2px red;
+	/*border: solid 2px red;*/
 	width: 70px;
 	height: 60px;
 	float: right;
@@ -92,11 +92,11 @@
 	top: 600px;
 	background-image: url('../images/paper.png');
 	background-repeat: no-repeat;
-	background-size: 60px 60px;
+	background-size: 50px 50px;
 }
 
 #laptopItem {
-	border: solid 2px red;
+	/*border: solid 2px red;*/
 	width: 80px;
 	height: 70px;
 	left: 585px;
