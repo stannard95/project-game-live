@@ -1,9 +1,24 @@
 $(function () {
 	
+	var item1 = null;
+	var item2 = null;
 	var $inventory = $('.inventory-box');
    	$inventory.on('click', function(event) {
    		console.log('Clicked');
-   		makeAlert('This is a ' + $(this).attr('value'));
+
+   		//Combining items
+   		if ($(this).css('background-image') !== 'none') {
+   			$(this).css('border', 'solid yellow 2px');
+   			if (item1 === null) {
+   				item1 = $(this);
+   				console.log(item1.attr('value'));
+   			}
+   			else {
+   				item2 = $(this);
+   				console.log(item2.attr('value'));
+   				combine(item1, item2);
+   			}
+   		}
    		
    	});
 
@@ -27,8 +42,10 @@ $(function () {
    	});
 
    	var $drawers = $('#drawersItem');
-   	$drawers.on('click', function(event) {
+   	$drawers.one('click', function(event) {
    		console.log('yeah boi, drawers');
+   		var $eraser = $('#eraserItem');
+   		addItem($eraser, $inventory);
    	});
 
    	var $door = $('#door');
@@ -43,7 +60,7 @@ $(function () {
 });
 
 
-//Adds an item to the inventory
+// Adds an item to the inventory
 function addItem (item, $inventory) {
 	var inventoryCheck = checkInventoryFree($inventory);
 
@@ -53,14 +70,14 @@ function addItem (item, $inventory) {
 	} else {
 		inventoryCheck.css("background-image", item.css("background-image"));
 		inventoryCheck.attr('value', item.attr('value'));
-		console.log('Item is: ' + inventoryCheck.attr('value'));
+		makeAlert('You picked up a ' + inventoryCheck.attr('value'));
 		item.hide();
 	}
 }
 
 
 // Checks to see if the inventory space is alreayd filled
-function checkInventoryFree($inventory) {
+function checkInventoryFree ($inventory) {
 	for (var i = 0; i < $inventory.length; i++) {
 		var inventoryBox = $inventory.eq(i);
 
@@ -76,7 +93,15 @@ function checkInventoryFree($inventory) {
 	
 }
 
+
+// combines two objects together
+function combine (item1, item2) {
+	makeAlert('You combined ' + item1.attr('value') + ' and ' + item2.attr('value'));
+
+}
+
+
 //Makes an alert from the text given
-function makeAlert(text) {
+function makeAlert (text) {
 	alert(text);
 }
