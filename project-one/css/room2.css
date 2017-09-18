@@ -1,0 +1,32 @@
+.main-container {
+	border: solid black 4px;
+	width: 1400px;
+	height: 750px;
+	margin: 0 auto;
+	background-image: url('../images/room2/room2.png');
+	background-size: 1400px 750px;
+	background-repeat: no-repeat;
+}
+
+.inventory {
+	border: solid black 4px;
+	width: 90%;
+	height: 70px;
+	margin: 0 auto;
+	background-color: brown;
+	opacity: 0.8;
+
+}
+
+.inventory-box {
+	border: solid black 2px;
+	width: 80px;
+	height: 60px;
+	margin-left: 40px;
+	margin-right: 25px;
+	background-color: white;
+	display: inline-block;
+	background-image: none;
+	background-size: 90%;
+	background-repeat: no-repeat;
+}

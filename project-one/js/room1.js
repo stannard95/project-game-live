@@ -3,6 +3,11 @@ $(function () {
 	var item1 = null;
 	var item2 = null;
    var doorUnlocked = false;
+   var time = 0;
+   var $timer = $('#timer');
+
+   increment(time, $timer);
+
    $('#room2Link').hide();
 	var $inventory = $('.inventory-box');
    	$inventory.on('click', function(event) {
@@ -94,6 +99,26 @@ $(function () {
       });
 });
 
+
+function increment(time, $timer) {
+      setTimeout(function(){
+         time ++;
+         var mins = Math.floor(time/10/60);
+         var secs = Math.floor(time/10 % 60);
+         var hours = Math.floor(time/10/60/60);
+         var tenths = time % 10;
+         if (mins < 10) {
+            mins = '0' + mins;
+         }
+
+         if (secs < 10) {
+            secs = '0' + secs;
+         }
+         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths);
+         increment(time, $timer);
+      }, 1000)
+   
+}
 
 // Produces a inout form with a button
 function makeForm(choice) {
