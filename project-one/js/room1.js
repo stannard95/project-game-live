@@ -49,17 +49,8 @@ $(function () {
    	var $laptop = $('#laptopItem');
    	$laptop.on('click', function(event) {
    		console.log('yeah boi, laptop');
-   		var $form = $("<form></form>");
-   		$form.append("<input type='text' class='laptopInput'/>");
-   		$form.append($("<button class=enterButton>Enter</button>"));
-   		$('.main-container').append($form);
-
-   		$('.enterButton').on('click', function (event) {
-   			var input = $(".laptopInput").val();
-   			checkInputValid(input);
-   		});
+         makeForm('laptop');
    		
-
    	});
 
    	var $drawers = $('#drawersItem');
@@ -77,18 +68,34 @@ $(function () {
    	var $doorLock = $('#doorLock');
    	$doorLock .on('click', function(event) {
    		console.log('yeah boi, door lock');
-   		var $form = $("<form></form>");
-   		$form.append("<input type='text' class='laptopInput'/>");
-   		$form.append($("<button class=enterButton>Enter</button>"));
-   		$('.main-container').append($form);
-   		$('.enterButton').on('click', function (event) {
-   			var input = $(".laptopInput").val();
-   			checkDoorValid(input);
-   		});
+         makeForm('doorLock');
+
    	});
 });
 
-function checkDoorValid(text) {
+
+// Produces a inout form with a button
+function makeForm(choice) {
+   var $form = $("<form></form>");
+         $form.append("<input type='text' class='formInput'/>");
+         $form.append($("<button class=enterButton>Enter</button>"));
+         $('.main-container').append($form);
+         $('.enterButton').on('click', function (event) {
+
+             var input = $(".formInput").val();
+            if (choice === 'laptop') {
+               checkLaptopInputValid(input);
+          
+            } else if (choice === 'doorLock') {
+               checkDoorInputValid(input);
+            } 
+         });
+
+}
+
+
+ // Checks that the door lock password is valid
+function checkDoorInputValid(text) {
 	if (text === '1950') {
 		makeAlert('The door unlocks!');
 	}
@@ -98,15 +105,15 @@ function checkDoorValid(text) {
 	}
 }
 
-function checkInputValid(text) {
+// Checks that the laptop password is valid
+function checkLaptopInputValid(text) {
 	if (text === 'java') {
 		makeAlert('Try some numbers instead of letters');
 	
 	} else if (text === '101221') {
 		makeAlert('Welcome to your computer\nThe door lock is the year the Turing Test was developed.');
-	}
-
-	else {
+	
+   } else {
 		makeAlert('Try something else');
 	}
 }
