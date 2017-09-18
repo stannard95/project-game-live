@@ -9,6 +9,8 @@ What is it?:
 		-Make a tutorial that is easy to understand, especially for those who haven’t played escape games before.	
 
 		-Create multiple rooms with puzzles, and the rooms that link with each other.
+
+		-The bottom floor is made.
 		
 		-The player has an inventory where they can store their items they collect through the game.
 		
@@ -71,6 +73,7 @@ What is it?:
 		-Make a stack of cards, players are given a shuffled pack and can place them in the middle.
 
 		-Player’s use the keyboard to use make a snap when the card is matched.
+
 
 	
 	how it will work:
