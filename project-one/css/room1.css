@@ -49,9 +49,10 @@
 	background-color: white;
 	position: absolute;
 	left: 857px;
-	top: 220px;
+	top: 200px;
 	width: 100px;
-	height: 25px;
+	height: 60px;
+	font-size: 20px;
 
 }
 

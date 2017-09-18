@@ -18,11 +18,14 @@ $(function () {
    				$(this).css('border', 'solid yellow 2px');
    			}
 
+            // Selects item 1
    			if (item1 === null) {
    				item1 = $(this);
    				console.log(item1.attr('value'));
-   			}
-   			else {
+   			
+            } else {
+
+               //Selects item 2 and attempts to combine
    				item2 = $(this);
    				console.log(item2.attr('value'));
    				combine(item1, item2);
@@ -76,6 +79,7 @@ $(function () {
 
 // Produces a inout form with a button
 function makeForm(choice) {
+   makeAlert('Enter a password');
    var $form = $("<form></form>");
          $form.append("<input type='text' class='formInput'/>");
          $form.append($("<button class=enterButton>Enter</button>"));
@@ -98,9 +102,8 @@ function makeForm(choice) {
 function checkDoorInputValid(text) {
 	if (text === '1950') {
 		makeAlert('The door unlocks!');
-	}
-
-	else {
+	
+   } else {
 		makeAlert('The door remains locked');
 	}
 }
@@ -114,7 +117,7 @@ function checkLaptopInputValid(text) {
 		makeAlert('Welcome to your computer\nThe door lock is the year the Turing Test was developed.');
 	
    } else {
-		makeAlert('Try something else');
+		makeAlert('');
 	}
 }
 
@@ -158,18 +161,20 @@ function combine (item1, item2) {
 	var item2Value = item2.attr('value');
 
 	// Combine pencil and paper for java message
+   item1.css('border', 'solid black 2px');
+   item2.css('border', 'solid black 2px');
 	if (item1Value === 'pencil' && item2Value === 'paper' ||
 		item1Value === 'paper' && item2Value === 'pencil') {
 
 		makeAlert('You combined ' + item1Value + ' and ' + item2Value);
-		item1.css('border', 'solid black 2px');
-		item2.css('border', 'solid black 2px');
-
+		
 		item1.css('background-image', 'url(../images/room1/paperCombined.png)');
 		item1.attr('value', 'java');
 		item2.css('background-image', 'none');
 		
-	}
+	}  else {
+      makeAlert('Sorry, that combination did not work');
+   }
 
 }
 
