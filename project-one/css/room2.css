@@ -32,7 +32,7 @@
 }
 
 #notes-container {
-	border: solid red 2px;
+	/*border: solid red 2px;*/
 	width: 350px;
 	height: 100px;
 	position: absolute;
@@ -42,18 +42,20 @@
 }
 
 .note {
-	border: solid blue 2px;
+	background-color: brown;
 	width: 50px;
 	height: 50px;
 	margin-left: 5px;
 	margin-right: 5px;
 	display: inline-block;
+	font-size: 12px;
+	text-align: center;
 
 
 }
 
 #noteSelect-container {
-	border: solid red 2px;
+	/*border: solid red 2px;*/
 	width: 350px;
 	height: 100px;
 	position: absolute;
