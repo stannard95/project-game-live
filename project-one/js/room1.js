@@ -2,6 +2,8 @@ $(function () {
 	
 	var item1 = null;
 	var item2 = null;
+   var doorUnlocked = false;
+   $('#room2Link').hide();
 	var $inventory = $('.inventory-box');
    	$inventory.on('click', function(event) {
    		console.log('Clicked');
@@ -66,12 +68,18 @@ $(function () {
    	var $door = $('#door');
    	$door.on('click', function(event) {
    		console.log('yeah boi, door');
+         if (doorUnlocked) {
+            makeAlert('Proceed to the break room!');
+            $('#room2Link').show();
+         }
    	});
 
    	var $doorLock = $('#doorLock');
    	$doorLock .on('click', function(event) {
    		console.log('yeah boi, door lock');
+         makeAlert('HINT: \nThe difference between two secrets...')
          makeForm('doorLock');
+         doorUnlocked = true;
 
    	});
 
@@ -95,14 +103,16 @@ function makeForm(choice) {
          $form.append($("<button class=enterButton>Enter</button>"));
          $('.main-container').append($form);
          $('.enterButton').on('click', function (event) {
-
+            event.preventDefault();
              var input = $(".formInput").val();
             if (choice === 'laptop') {
                checkLaptopInputValid(input);
           
             } else if (choice === 'doorLock') {
                checkDoorInputValid(input);
-            } 
+            }
+
+             $form.remove();
          });
 
 }
@@ -110,7 +120,7 @@ function makeForm(choice) {
 
  // Checks that the door lock password is valid
 function checkDoorInputValid(text) {
-	if (text === '1950') {
+	if (text === '99271') {
 		makeAlert('The door unlocks!');
 	
    } else {
@@ -121,13 +131,13 @@ function checkDoorInputValid(text) {
 // Checks that the laptop password is valid
 function checkLaptopInputValid(text) {
 	if (text === 'java') {
-		makeAlert('Try some numbers instead of letters');
+		makeAlert('The alphabet might come in handy here...');
 	
 	} else if (text === '101221') {
-		makeAlert('Welcome to your computer\nThe door lock is the year the Turing Test was developed.');
+		makeAlert('Welcome to your computer\nThe door lock is the (laptop password - turing test year)');
 	
    } else {
-		makeAlert('');
+		makeAlert('Wrong, try again.');
 	}
 }
 
