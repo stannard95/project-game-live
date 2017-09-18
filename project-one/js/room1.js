@@ -100,6 +100,7 @@ $(function () {
 });
 
 
+// Timer increases
 function increment(time, $timer) {
       setTimeout(function(){
          time ++;
