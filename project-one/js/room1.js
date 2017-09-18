@@ -74,6 +74,16 @@ $(function () {
          makeForm('doorLock');
 
    	});
+
+      var $whiteboard = $('#whiteboard');
+      $whiteboard.on('click', function(event) {
+         console.log('yeah boi, whiteboard');
+         if (item1.attr('value') === 'eraser') {
+            $whiteboard.css('background-image', 'url(../images/room1/message.png)');
+            item1.css('border', 'solid black 2px');
+            item1 = null;
+         }
+      });
 });
 
 
