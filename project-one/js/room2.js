@@ -8,6 +8,8 @@ $(function () {
 	var photo = null;
 	var photoBoxSelect = null;
 	var $inventory = $('.inventory-box');
+	var item1 = null;
+	var item2 = null;
 	
 
 	// Selecting a note
@@ -37,14 +39,13 @@ $(function () {
 
 	var $noteButton = $('#noteButton');
 	$noteButton.on('click', function (event) {
-		checkNotesVaild($noteBoxes, $noteSelect);
+		checkNotesVaild($inventory, $noteBoxes, $noteSelect);
 	});
 
 
 	// Selecting a photo
 	var $photoSelect = $('.photoSelect');
 	$photoSelect.on('click', function (event) {
-		console.log('SELECTED');
 
 		if (photo === null) {
 			photo = $(this);
@@ -74,7 +75,36 @@ $(function () {
 		checkPhotosValid($inventory, $photoBoxes, $photoSelect);
 	});
 
+	//Inventory
+   	$inventory.on('click', function(event) {
+   		console.log('Clicked');
+
+   		//Combining items
+   		if ($(this).css('background-image') !== 'none') {
+   			if (item1 === null) {
+   				item1 = $(this);
+   				$(this).css('border', 'solid yellow 2px');
+   			}
+
+   			else {
+   				item2 = $(this);
+   				combineKeys(item1, item2);
+   			}
+   		} 
+
+   		else {
+   				
+   		}   
+   	});
 });
+
+
+function combineKeys(item1, item2) {
+	item1.css('background-image', 'url(../images/room1/key1.jpg)');
+	item2.hide();
+	item1.css('border', 'solid black 2px');
+
+}
 
 // Checks that the photos that have been ordered properly
 function checkPhotosValid (inventory, photoBoxes, photoSelect) {
@@ -113,12 +143,12 @@ function checkPhotosValid (inventory, photoBoxes, photoSelect) {
 }
 
 // Checks that the notes have been ordered properly
-function checkNotesVaild (noteBoxes, noteSelect) {
+function checkNotesVaild (inventory, noteBoxes, noteSelect) {
 	if (noteBoxes.eq(4).html() === 'Academy standup' && 
 		noteBoxes.eq(1).html() === 'Sparta day' &&
 		noteBoxes.eq(3).html() === 'Client visit') {
 		makeAlert('Correct! Here is a key part!');
-		addItem($inventory);
+		inventory.eq(1).css('background-image', 'url(../images/room2/key3.png)');
 
 		
 	} else {
