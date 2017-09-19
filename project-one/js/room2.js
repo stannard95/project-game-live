@@ -4,7 +4,8 @@
 $(function () {
 	var note = null;
 	var noteBoxSelect = null;
-
+	var dehTime = JSON.parse(localStorage('timeThing'));
+	console.log(dehTime);
 	var photo = null;
 	var photoBoxSelect = null;
 	var $inventory = $('.inventory-box');

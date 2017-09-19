@@ -76,6 +76,11 @@ $(function () {
          if (doorUnlocked) {
             makeAlert('Proceed to the break room!');
             $('#room2Link').show();
+
+            var currentTime = $('#timer').html();
+            console.log(currentTime);
+            var JSONReadyUsers = JSON.stringify(currentTime);
+            localStorage.setItem('timeThing', JSONReadyUsers);
          }
    	});
 
