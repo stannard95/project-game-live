@@ -51,6 +51,8 @@
 	display: inline-block;
 	font-size: 12px;
 	text-align: center;
+	background-size: 70px 50px;
+	background-repeat: repeat;
 
 
 }
@@ -66,14 +68,16 @@
 
 
 .photoSelect {
-	border: solid blue 2px;
-	width: 50px;
-	height: 50px;
+	/*border: solid blue 2px;*/
+	width: 45px;
+	height: 70px;
 	margin-left: 5px;
 	margin-right: 5px;
 	display: inline-block;
-	font-size: 12px;
-	text-align: center;
+	background-repeat: no-repeat;
+	background-size: 100px 70px;
+	padding-right: 35px;
+
 }
 
 #photoButton {
@@ -84,6 +88,28 @@
 	position: absolute;
 	right: 130px;
 	top: 70px;
+}
+
+
+#photo1 {
+	background-image: url('../images/room2/ev1.png');
+	}
+
+#photo2 {
+	background-image: url('../images/room2/ev2.png');
+}
+
+#photo3 {
+	background-image: url('../images/room2/ev3.png');
+}
+
+#photo4 {
+	background-image: url('../images/room2/ev4.png');
+}
+
+#photo5 {
+	background-image: url('../images/room2/ev5.png');
+	background-size: 50px 70px;
 }
 
 #notes-container {
@@ -154,6 +180,7 @@
 	position: relative;
 	left: 120px;
 }
+
 
 
 

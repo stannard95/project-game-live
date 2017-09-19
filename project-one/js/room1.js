@@ -115,9 +115,9 @@ function increment(time, $timer) {
          if (secs < 10) {
             secs = '0' + secs;
          }
-         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths);
+         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
          increment(time, $timer);
-      }, 1000)
+      }, 100)
    
 }
 

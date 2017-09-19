@@ -1,11 +1,14 @@
-$(function () {
-	var $inventory = $('.inventory-box');
 
+
+
+$(function () {
 	var note = null;
 	var noteBoxSelect = null;
 
 	var photo = null;
 	var photoBoxSelect = null;
+	var $inventory = $('.inventory-box');
+	
 
 	// Selecting a note
 	var $noteSelect = $('.noteSelect');
@@ -42,36 +45,70 @@ $(function () {
 	var $photoSelect = $('.photoSelect');
 	$photoSelect.on('click', function (event) {
 		console.log('SELECTED');
-		console.log($(this).html());
+
 		if (photo === null) {
 			photo = $(this);
 			photo.css('border', 'solid yellow 2px');
-			photo = null;
+	
 		}
 	});
 
 	// Placing the photo
-	var $photoBoxes = $('.photo');
+	var $photoBoxes = $('#photo-container .photo');
 	$photoBoxes.on('click', function (event) {
-		photoVoxSelect = $(this);
-		photo.hide();
+		photoBoxSelect = $(this);
 
-		if (note !== null) {
-			photoBoxSelect.html(photo.html());
+
+		if (photo !== null) {
 			photo.css('border', 'none');
-			photoBoxSelect.css('background-color', photo.css('background-color'));
+			photoBoxSelect.css('background-color', 'transparent');
+			photoBoxSelect.css('background-image', photo.css('background-image'));
+			photo.hide();
+			photo = null;
+
 		}
 	});
 
 	var $photoButton = $('#photoButton');
 	$photoButton.on('click', function (event) {
-		checkPhotosVaild($photoBoxes, $photoSelect);
+		checkPhotosValid($inventory, $photoBoxes, $photoSelect);
 	});
 
 });
 
 // Checks that the photos that have been ordered properly
-function checkPhotosValid ($photoBoxes, $photoSelect) {
+function checkPhotosValid (inventory, photoBoxes, photoSelect) {
+	var location = 'url("file:///Users/tech-a67/Documents/projects/project-one/images/room2/'
+	var photo1Local = location + "ev1.png\"\)";
+	var photo2Local = location + "ev2.png\"\)";
+	var photo3Local = location + "ev3.png\"\)";
+	var photo4Local = location + "ev4.png\"\)";
+	var photo5Local = location + "ev5.png\"\)";
+	console.log(photo5Local);
+
+	if (photoBoxes.eq(0).css('background-image') 
+		=== photo1Local 
+		&& photoBoxes.eq(1).css('background-image') 
+		=== photo2Local
+		&& photoBoxes.eq(2).css('background-image') 
+		=== photo3Local
+		&& photoBoxes.eq(3).css('background-image') 
+		=== photo4Local
+		&& photoBoxes.eq(4).css('background-image') 
+		=== photo5Local) {
+
+		makeAlert('CORRECT, EHMGAGRD');
+
+
+		inventory.eq(0).css('background-image', 'url(../images/room2/key1.png)');
+		
+	
+	} else {
+		photoSelect.show();
+		photoBoxes.css('background-color', 'brown');
+		photoBoxes.css('background-image', 'none');
+		makeAlert('Incorrect! Have a look at the wall if you need help!');
+	}
 
 }
 
@@ -80,12 +117,14 @@ function checkNotesVaild (noteBoxes, noteSelect) {
 	if (noteBoxes.eq(4).html() === 'Academy standup' && 
 		noteBoxes.eq(1).html() === 'Sparta day' &&
 		noteBoxes.eq(3).html() === 'Client visit') {
-		makeAlert('Correct! Here is a thing!');
+		makeAlert('Correct! Here is a key part!');
+		addItem($inventory);
+
 		
 	} else {
 		noteSelect.show();
 		noteBoxes.html('').css('background-color', 'brown');
-		makeAlert('Incorrect! Try again!');
+		makeAlert('Incorrect! Have a look at the wall if you need help!');
 
 	} 
 }
@@ -94,6 +133,7 @@ function checkNotesVaild (noteBoxes, noteSelect) {
 function makeAlert (text) {
 	alert(text);
 }
+
 
 
 
