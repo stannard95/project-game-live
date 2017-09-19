@@ -160,7 +160,7 @@ function checkLaptopInputValid(text) {
 		makeAlert('The alphabet might come in handy here...');
 	
 	} else if (text === '101221') {
-		makeAlert('Welcome to your computer\nThe door lock is the (laptop password - turing test year)');
+		makeAlert('Welcome to your computer\nThe door lock is the (laptop password - message on the whiteboard)');
 	
    } else {
 		makeAlert('Wrong, try again.');
