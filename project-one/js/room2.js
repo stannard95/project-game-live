@@ -4,34 +4,27 @@ $(function () {
 	var noteBoxSelect = null;
 	var photo = null;
 	var photoBoxSelect = null;
+
 	var $inventory = $('.inventory-box');
 	var item1 = null;
 	var item2 = null;
+	var doorUnlocked = false;
 
 	var time = JSON.parse(localStorage['time']);
-	console.log(time);
 
 	var $timer = $('#timer');
 	increment(time, $timer);
-	function increment(time, $timer) {
-      setTimeout(function(){
-         time ++;
-         var mins = Math.floor(time/10/60);
-         var secs = Math.floor(time/10 % 60);
-         var hours = Math.floor(time/10/60/60);
-         var tenths = time % 10;
-         if (mins < 10) {
-            mins = '0' + mins;
-         }
 
-         if (secs < 10) {
-            secs = '0' + secs;
-         }
-         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
-         increment(time, $timer);
-      }, 100)
-   
-	}
+
+	var door = $('#door');
+	door.on('click', function (event) {
+		if (doorUnlocked) {
+			console.log('YOU WIN');
+		
+		} else  {
+			console.log('Still locked');
+		}
+	});
 
 
 	// Selecting a note
@@ -99,18 +92,27 @@ $(function () {
 
 	//Inventory
    	$inventory.on('click', function(event) {
-   		console.log('Clicked');
+   		var selected = $(this);
 
    		//Combining items
-   		if ($(this).css('background-image') !== 'none') {
+   		console.log(selected.css('background-image'));
+   		if(selected.css('background-image') === 'url("file:///Users/tech-a67/'
+   			+ 'Documents/projects/project-one/images/room1/key1.jpg")') {
+   			doorUnlocked = true;
+   			selected.css('border', 'solid yellow 2px');
+   		}
+
+   		else if (selected.css('background-image') !== 'none' 
+   			&& selected.css('background-image') !== 'url(../images/room1/key1.jpg)') {
    			if (item1 === null) {
-   				item1 = $(this);
-   				$(this).css('border', 'solid yellow 2px');
+   				item1 = selected;
+   				selected.css('border', 'solid yellow 2px');
    			}
 
    			else {
-   				item2 = $(this);
-   				combineKeys(item1, item2);
+   				item2 = selected;
+   				combineKeys();
+   				
    			}
    		} 
 
@@ -118,15 +120,41 @@ $(function () {
    				
    		}   
    	});
-});
 
 
-function combineKeys(item1, item2) {
+	// Timer function
+	function increment(time, $timer) {
+      setTimeout(function(){
+         time ++;
+         var mins = Math.floor(time/10/60);
+         var secs = Math.floor(time/10 % 60);
+         var hours = Math.floor(time/10/60/60);
+         var tenths = time % 10;
+         if (mins < 10) {
+            mins = '0' + mins;
+         }
+
+         if (secs < 10) {
+            secs = '0' + secs;
+         }
+         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
+         increment(time, $timer);
+      }, 100)
+   
+	}
+
+   	function combineKeys() {
 	item1.css('background-image', 'url(../images/room1/key1.jpg)');
 	item2.hide();
 	item1.css('border', 'solid black 2px');
+	item1 = null;
+	item2 = null;
 
 }
+});
+
+
+
 
 // Checks that the photos that have been ordered properly
 function checkPhotosValid (inventory, photoBoxes, photoSelect) {
@@ -186,12 +214,6 @@ function makeAlert (text) {
 	alert(text);
 }
 
-function makeTime(timeSaved) {
-	var hours = parseInt(timeSaved[0]);
-	var mins = parseInt(timeSaved[1]);
-	var secs = parseInt(timeSaved[2]);
-	var tenth = parseInt(timeSaved[3]);
-}
 
 
 

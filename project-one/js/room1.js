@@ -122,8 +122,6 @@ $(function () {
                secs = '0' + secs;
             }
             $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
-            // var JSONReadyUsers = JSON.stringify(time);
-            // localStorage.setItem('time', JSONReadyUsers);
             increment();
          }, 100)
    }
