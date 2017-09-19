@@ -1,17 +1,38 @@
 
-
-
 $(function () {
 	var note = null;
 	var noteBoxSelect = null;
-	var dehTime = JSON.parse(localStorage('timeThing'));
-	console.log(dehTime);
 	var photo = null;
 	var photoBoxSelect = null;
 	var $inventory = $('.inventory-box');
 	var item1 = null;
 	var item2 = null;
-	
+
+	var time = JSON.parse(localStorage['time']);
+	console.log(time);
+
+	var $timer = $('#timer');
+	increment(time, $timer);
+	function increment(time, $timer) {
+      setTimeout(function(){
+         time ++;
+         var mins = Math.floor(time/10/60);
+         var secs = Math.floor(time/10 % 60);
+         var hours = Math.floor(time/10/60/60);
+         var tenths = time % 10;
+         if (mins < 10) {
+            mins = '0' + mins;
+         }
+
+         if (secs < 10) {
+            secs = '0' + secs;
+         }
+         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
+         increment(time, $timer);
+      }, 100)
+   
+	}
+
 
 	// Selecting a note
 	var $noteSelect = $('.noteSelect');
@@ -163,6 +184,13 @@ function checkNotesVaild (inventory, noteBoxes, noteSelect) {
 // Makes an alert from the text given
 function makeAlert (text) {
 	alert(text);
+}
+
+function makeTime(timeSaved) {
+	var hours = parseInt(timeSaved[0]);
+	var mins = parseInt(timeSaved[1]);
+	var secs = parseInt(timeSaved[2]);
+	var tenth = parseInt(timeSaved[3]);
 }
 
 

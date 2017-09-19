@@ -1,12 +1,12 @@
 $(function () {
-	
 	var item1 = null;
 	var item2 = null;
    var doorUnlocked = false;
    var time = 0;
    var $timer = $('#timer');
-
-   increment(time, $timer);
+   
+   increment();
+   console.log(time);
 
    $('#room2Link').hide();
 	var $inventory = $('.inventory-box');
@@ -76,11 +76,9 @@ $(function () {
          if (doorUnlocked) {
             makeAlert('Proceed to the break room!');
             $('#room2Link').show();
-
-            var currentTime = $('#timer').html();
-            console.log(currentTime);
-            var JSONReadyUsers = JSON.stringify(currentTime);
-            localStorage.setItem('timeThing', JSONReadyUsers);
+            save();
+            
+           
          }
    	});
 
@@ -102,29 +100,39 @@ $(function () {
             item1 = null;
          }
       });
+
+      function save() {
+         var JSONReadyUsers = JSON.stringify(time);
+         localStorage.setItem('time', JSONReadyUsers);
+      }
+
+      // Timer increases
+   function increment() {
+         setTimeout(function(){
+            time ++;
+            var mins = Math.floor(time/10/60);
+            var secs = Math.floor(time/10 % 60);
+            var hours = Math.floor(time/10/60/60);
+            var tenths = time % 10;
+            if (mins < 10) {
+               mins = '0' + mins;
+            }
+
+            if (secs < 10) {
+               secs = '0' + secs;
+            }
+            $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
+            // var JSONReadyUsers = JSON.stringify(time);
+            // localStorage.setItem('time', JSONReadyUsers);
+            increment();
+         }, 100)
+   }
 });
 
 
-// Timer increases
-function increment(time, $timer) {
-      setTimeout(function(){
-         time ++;
-         var mins = Math.floor(time/10/60);
-         var secs = Math.floor(time/10 % 60);
-         var hours = Math.floor(time/10/60/60);
-         var tenths = time % 10;
-         if (mins < 10) {
-            mins = '0' + mins;
-         }
 
-         if (secs < 10) {
-            secs = '0' + secs;
-         }
-         $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
-         increment(time, $timer);
-      }, 100)
-   
-}
+
+
 
 // Produces a inout form with a button
 function makeForm(choice) {
