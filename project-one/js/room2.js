@@ -4,6 +4,7 @@ $(function () {
 	var note = null;
 	var noteboxSelect = null;
 
+	// Selecting a note
 	var $noteSelect = $('.noteSelect');
 	$noteSelect.on('click', function (event) {
 		console.log($(this).html());
@@ -11,12 +12,12 @@ $(function () {
 		note.css('border', 'solid yellow 2px');
 	});
 
+	// Placing the note
 	var $noteBoxes = $('.note');
 	$noteBoxes.on('click', function (event) {
 		noteboxSelect = $(this);
 		note.hide();
 
-		// Places note in box
 		if (note !== null) {
 			noteboxSelect.html(note.html());
 			note.css('border', 'none');
