@@ -8,12 +8,20 @@ $(function () {
 	var $inventory = $('.inventory-box');
 
 	var time = JSON.parse(localStorage['time']);
+	var countdown = 50;
+	var $countdownHeading = $('#countdown');
 
 	var $timer = $('#timer');
 	increment(time, $timer);
 
 	var $simon = $('#simon');
 	changeMouse($simon);
+
+	var reset = $('#resetButton');
+	reset.on('click', function (event) {
+		startWireGame();
+		countdown = 50;
+	});
 
 	$simon.on('click', function (event) {
 		simonContainer.show();
@@ -22,6 +30,9 @@ $(function () {
 
 	});
 
+	function stopTime() {
+		clearTimeout(timestop);
+	}
 
 	// Timer function
 	function increment(time, $timer) {
@@ -44,6 +55,30 @@ $(function () {
    
 	}
 
+	function decrement() {
+		timestop = setTimeout(function() { 
+
+         countdown --;
+         var secs = Math.floor(countdown / 10 % 60);
+         var tenths = countdown % 10;
+
+         if (secs < 10) {
+            secs = '0' + secs;
+         }
+
+         if (secs <= 0 && tenths <= 0) {
+         	$countdownHeading.html(secs + ':' + tenths + '0');
+         	clearTimeout(timestop);	
+         }
+
+         else {
+        	 $countdownHeading.html(secs + ':' + tenths + '0');
+        	 decrement();
+     	}
+        
+      }, 100)
+	}
+
 	function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -51,28 +86,32 @@ $(function () {
     }
     return array;
 }
-
+	
+	
 
 	function startWireGame() {
+		decrement(time);
 		var colors = ['red', 'yellow', 'green', 'blue', 'black'];
 
 		var $wireSelect = $('.wireS');
 		changeMouse($wireSelect);
 
+		// Random colors for top row
 		colors = shuffleArray(colors);
 		for (var i = 0; i < $wireSelect.length; i++) {
 			$wireSelect.eq(i).css('background-color', colors[i]);
-			console.log($wireSelect.eq(i).css('background-color'));
+
 		}
 
 		var $wireSlot = $('.wireSlot');
 		changeMouse($wireSlot);
 		var $wirePlace = $('.wire');
 
+		// Random colors for bottom row
 		colors = shuffleArray(colors);
 		for (var i = 0; i < $wirePlace.length; i++) {
 			$wirePlace.eq(i).css('background-color', colors[i]);
-			console.log($wirePlace.eq(i).css('background-color'));
+
 		}
 
 		var wireSelected = null;
