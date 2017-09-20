@@ -73,6 +73,7 @@ $(function () {
 		addItem($eraser, $inventory);
 	});
 
+
 	var $door = $('#door');
 	changeMouse($door);
 

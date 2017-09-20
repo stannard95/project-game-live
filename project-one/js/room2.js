@@ -1,5 +1,7 @@
 
 $(function () {
+
+	$('#room3Link').hide();
 	var note = null;
 	var noteBoxSelect = null;
 	var photo = null;
@@ -11,6 +13,7 @@ $(function () {
 	var doorUnlocked = false;
 
 	var time = JSON.parse(localStorage['time']);
+	var newTime = 0;
 
 	var $timer = $('#timer');
 	increment(time, $timer);
@@ -21,8 +24,10 @@ $(function () {
 
 	$door.on('click', function (event) {
 		if (doorUnlocked) {
-			console.log('YOU WIN');
-		
+			save();
+			$('#room3Link').show();
+			
+				
 		} else  {
 			console.log('Still locked');
 		}
@@ -47,16 +52,19 @@ $(function () {
 
 	$noteBoxes.on('click', function (event) {
 		noteBoxSelect = $(this);
-		note.hide();
-
-		if (note !== null) {
+		console.log(noteBoxSelect.css('background-color'));
+		if (note !== null && noteBoxSelect.css('background-color') === 'rgb(165, 42, 42)') {
+			note.hide();
 			noteBoxSelect.html(note.html());
 			note.css('border', 'none');
 			noteBoxSelect.css('background-color', note.css('background-color'));
 			note = null; // Resets so user can pick again
 		}
-	});
 
+		else {
+
+		}
+	});
 
 	var $noteButton = $('#noteButton');
 	changeMouse($noteButton);
@@ -87,13 +95,17 @@ $(function () {
 		photoBoxSelect = $(this);
 
 
-		if (photo !== null) {
+		if (photo !== null && photoBoxSelect.css('background-color') === 'rgb(165, 42, 42)') {
 			photo.css('border', 'none');
 			photoBoxSelect.css('background-color', 'transparent');
 			photoBoxSelect.css('background-image', photo.css('background-image'));
 			photo.hide();
 			photo = null;
 
+		}
+
+		else {
+			
 		}
 	});
 
@@ -107,9 +119,8 @@ $(function () {
 	//Inventory
    	$inventory.on('click', function(event) {
    		var selected = $(this);
-
+   		console.log(time);
    		//Combining items
-   		console.log(selected.css('background-image'));
    		if(selected.css('background-image') === 'url("file:///Users/tech-a67/'
    			+ 'Documents/projects/project-one/images/room1/key1.jpg")') {
    			doorUnlocked = true;
@@ -135,6 +146,13 @@ $(function () {
    		}   
    	});
 
+   	function save() {
+	    var JSONReadyUsers = JSON.stringify(newTime);
+	    console.log(newTime);
+		localStorage.setItem('time', JSONReadyUsers);
+	}
+	
+
 
 	// Timer function
 	function increment(time, $timer) {
@@ -152,6 +170,7 @@ $(function () {
             secs = '0' + secs;
          }
          $timer.html(hours + ':' + mins + ':' + secs + ':' + tenths + '0');
+         newTime = time;
          increment(time, $timer);
       }, 100)
    
@@ -164,7 +183,7 @@ $(function () {
 	item1 = null;
 	item2 = null;
 
-}
+	}
 });
 
 // change the mouse cursor when hovering over an item
