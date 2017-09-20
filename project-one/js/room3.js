@@ -17,6 +17,7 @@ $(function () {
 
 	$simon.on('click', function (event) {
 		simonContainer.show();
+		startWireGame();
 
 
 	});
@@ -41,6 +42,59 @@ $(function () {
          increment(time, $timer);
       }, 100)
    
+	}
+
+	function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+
+	function startWireGame() {
+		var colors = ['red', 'yellow', 'green', 'blue', 'black'];
+
+		var $wireSelect = $('.wireS');
+		changeMouse($wireSelect);
+
+		colors = shuffleArray(colors);
+		for (var i = 0; i < $wireSelect.length; i++) {
+			$wireSelect.eq(i).css('background-color', colors[i]);
+			console.log($wireSelect.eq(i).css('background-color'));
+		}
+
+		var $wireSlot = $('.wireSlot');
+		changeMouse($wireSlot);
+		var $wirePlace = $('.wire');
+
+		colors = shuffleArray(colors);
+		for (var i = 0; i < $wirePlace.length; i++) {
+			$wirePlace.eq(i).css('background-color', colors[i]);
+			console.log($wirePlace.eq(i).css('background-color'));
+		}
+
+		var wireSelected = null;
+
+		//Countdown
+
+		$wireSelect.on('click', function (event) {
+			console.log('select');
+			wireSelected = $(this);
+		});
+
+		$wireSlot.on('click', function (event) {
+			console.log('slot');
+			if (wireSelected !== null) {
+				$(this).css('background-color', wireSelected.css('background-color'));
+			}
+
+		});
+
+		$wirePlace.on('click', function (event) {
+			console.log('place');
+		});
 	}
 });
 

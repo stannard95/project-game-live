@@ -66,7 +66,7 @@
 
 #row1 {
 	width: auto;
-	height: 100px;
+	height: 70px;
 	border: solid red 2px;
 
 }
@@ -98,7 +98,7 @@
 .wireS {
 	width: 50px;
 	height: 50px;
-	border: solid yellow 2px;
+	border: solid white 2px;
 	display: inline-block;
 	margin-left: 10px;
 	margin-top: 15px;
@@ -113,6 +113,7 @@
 	margin-left: 10px;
 	margin-right: 10px;
 	background-color: brown;
+	margin-bottom: 30px;
 }
 
 #resetButton {
@@ -123,6 +124,7 @@
 	top: 400px;
 	border: solid black 2px;
 	font-size: 16px;
+
 }
 
 
