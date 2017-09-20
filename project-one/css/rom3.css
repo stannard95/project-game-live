@@ -1,3 +1,10 @@
+
+p {
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
 .main-container {
 	border: solid black 4px;
 	width: 1400px;
@@ -50,7 +57,6 @@
 #simon {
 	width: 100px;
 	height: 100px;
-	border: solid red 2px;
 	position: absolute;
 	right: 320px;
 	top: 85px;
@@ -58,7 +64,7 @@
 
 #wire-container {
 	width: 400px;
-	height: 500px;
+	height: 600px;
 	border: solid black 6px;
 	margin: 0 auto;
 	background-color: grey;
@@ -67,28 +73,28 @@
 #row1 {
 	width: auto;
 	height: 70px;
-	border: solid red 2px;
+	border: solid white 2px;
 
 }
 
 #row2 {
 	width: auto;
 	height: 100px;
-	border: solid red 2px;
+	border: solid white 2px;
 
 }
 
 #rowSelect {
 	width: auto;
 	height: 100px;
-	border: solid blue 2px;
+	border: solid white 2px;
 	
 }
 
 .wire {
 	width: 50px;
 	height: 50px;
-	border: solid yellow 2px;
+	border: solid black 2px;
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -98,7 +104,7 @@
 .wireS {
 	width: 50px;
 	height: 50px;
-	border: solid white 2px;
+	border: solid black 2px;
 	display: inline-block;
 	margin-left: 10px;
 	margin-top: 15px;
@@ -116,15 +122,27 @@
 	margin-bottom: 30px;
 }
 
+#buttons {
+	border: solid black 2px;
+	width: auto;
+	height: 60px;
+	display: inline-block;
+	text-align: center;
+	margin-left: 80px;
+}
+
 #resetButton {
 	width: 100px;
 	height: 60px;
-	position: absolute;	
-	right: 660px;
-	top: 500px;
 	border: solid black 2px;
-	font-size: 16px;
+	font-size: 20px;
+}
 
+#startButton {
+	width: 100px;
+	height: 60px;
+	border: solid black 2px;
+	font-size: 20px;
 }
 
 #countdown {
@@ -132,6 +150,8 @@
 	width: 100px;
 	height: 70px;
 	background-color: red;
+	margin-left: 150px;
+	text-align: center;
 }
 
 

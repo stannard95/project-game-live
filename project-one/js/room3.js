@@ -8,7 +8,7 @@ $(function () {
 	var $inventory = $('.inventory-box');
 
 	var time = JSON.parse(localStorage['time']);
-	var countdown = 50;
+	var countdown = 75;
 	var $countdownHeading = $('#countdown');
 
 	var $timer = $('#timer');
@@ -17,15 +17,25 @@ $(function () {
 	var $simon = $('#simon');
 	changeMouse($simon);
 
-	var reset = $('#resetButton');
-	reset.on('click', function (event) {
+	var $start = $('#startButton');
+	changeMouse($start);
+	$start.on('click', function (event) {
 		startWireGame();
-		countdown = 50;
+		countdown = 75;
+	});
+
+	var $reset = $('#resetButton');
+	changeMouse($reset);
+	$reset.on('click', function (event) {
+		countdown = 75;
+		var secs = Math.floor(countdown / 10 % 60);
+        var tenths = countdown % 10;
+        $countdownHeading.html('0' + secs + ':' + tenths + '0');
+        clearTimeout(timestop);
 	});
 
 	$simon.on('click', function (event) {
 		simonContainer.show();
-		startWireGame();
 
 
 	});
@@ -127,15 +137,40 @@ $(function () {
 			console.log('slot');
 			if (wireSelected !== null) {
 				$(this).css('background-color', wireSelected.css('background-color'));
+				checkWin($wirePlace, $wireSlot);
 			}
 
 		});
 
-		$wirePlace.on('click', function (event) {
-			console.log('place');
-		});
+		
+
+
+
 	}
 });
+
+function checkWin($wire, $wireSlot) {
+	var wire1 = $wire.eq(0).css('background-color');
+	var wire2 = $wire.eq(1).css('background-color');
+	var wire3 = $wire.eq(2).css('background-color');
+	var wire4 = $wire.eq(3).css('background-color');
+	var wire5 = $wire.eq(4).css('background-color');
+
+	var wireSlot1 = $wireSlot.eq(0).css('background-color');
+	var wireSlot2 = $wireSlot.eq(1).css('background-color');
+	var wireSlot3 = $wireSlot.eq(2).css('background-color');
+	var wireSlot4 = $wireSlot.eq(3).css('background-color');
+	var wireSlot5 = $wireSlot.eq(4).css('background-color');
+
+	if (wire1 === wireSlot1 && wire2 === wireSlot2 &&
+		wire3 === wireSlot3 && wire4 === wireSlot4 &&
+		wire5 === wireSlot5) {
+		clearTimeout(timestop);
+	console.log('YOU WUNNNN');
+	}
+
+	console.log(wire1 + ',' + wireSlot1);
+}
 
 // change the mouse cursor when hovering over an item
 function changeMouse(item) {
