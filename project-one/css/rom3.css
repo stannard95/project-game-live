@@ -53,7 +53,80 @@
 	border: solid red 2px;
 	position: absolute;
 	right: 320px;
-	top: 95px;
+	top: 85px;
 }
+
+#wire-container {
+	width: 400px;
+	height: 400px;
+	border: solid black 6px;
+	margin: 0 auto;
+	background-color: grey;
+}
+
+#row1 {
+	width: auto;
+	height: 100px;
+	border: solid red 2px;
+
+}
+
+#row2 {
+	width: auto;
+	height: 100px;
+	border: solid red 2px;
+
+}
+
+#rowSelect {
+	width: auto;
+	height: 100px;
+	border: solid blue 2px;
+	
+}
+
+.wire {
+	width: 50px;
+	height: 50px;
+	border: solid yellow 2px;
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+.wireS {
+	width: 50px;
+	height: 50px;
+	border: solid yellow 2px;
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 15px;
+	margin-right: 10px;
+}
+
+.wireSlot {
+	width: 50px;
+	height: 95px;
+	border: solid black 2px;
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: brown;
+}
+
+#resetButton {
+	width: 100px;
+	height: 60px;
+	position: absolute;	
+	right: 660px;
+	top: 400px;
+	border: solid black 2px;
+	font-size: 16px;
+}
+
+
+
+
 
 

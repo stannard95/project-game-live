@@ -2,6 +2,8 @@
 $(function () {
 
 	$('#room3Link').hide();
+	var simonContainer = $('#wire-container');
+	simonContainer.hide();
 
 	var $inventory = $('.inventory-box');
 
@@ -9,6 +11,15 @@ $(function () {
 
 	var $timer = $('#timer');
 	increment(time, $timer);
+
+	var $simon = $('#simon');
+	changeMouse($simon);
+
+	$simon.on('click', function (event) {
+		simonContainer.show();
+
+
+	});
 
 
 	// Timer function
