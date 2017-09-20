@@ -6,7 +6,6 @@ $(function () {
    var $timer = $('#timer');
    
    increment();
-   console.log(time);
 
    $('#room2Link').hide();
 	var $inventory = $('.inventory-box');
@@ -19,7 +18,7 @@ $(function () {
    			// If the item is java
    			if ($(this).attr('value') === 'java') {
 
-   				makeAlert('The paper message reveals the word: java. \nMaybe its a password?');
+   				makeMessage('The paper message reveals the word: java. \nMaybe its a password?');
 
    			} else {
    				$(this).css('border', 'solid yellow 2px');
@@ -74,7 +73,7 @@ $(function () {
    	$door.on('click', function(event) {
    		console.log('yeah boi, door');
          if (doorUnlocked) {
-            makeAlert('Proceed to the break room!');
+            makeMessage('Proceed to the break room!');
             $('#room2Link').show();
             save();
             
@@ -85,7 +84,7 @@ $(function () {
    	var $doorLock = $('#doorLock');
    	$doorLock .on('click', function(event) {
    		console.log('yeah boi, door lock');
-         makeAlert('HINT: \nThe difference between two secrets...')
+         makeMessage('Enter a password.' + '\nHINT: \nThe difference between two secrets...');
          makeForm('doorLock');
          doorUnlocked = true;
 
@@ -101,10 +100,10 @@ $(function () {
          }
       });
 
-      function save() {
-         var JSONReadyUsers = JSON.stringify(time);
-         localStorage.setItem('time', JSONReadyUsers);
-      }
+   function save() {
+      var JSONReadyUsers = JSON.stringify(time);
+      localStorage.setItem('time', JSONReadyUsers);
+   }
 
       // Timer increases
    function increment() {
@@ -125,6 +124,17 @@ $(function () {
             increment();
          }, 100)
    }
+
+
+   // Creates a popup message
+   function makeMessage(text) {
+      var containerBox = $("<div class=messageBox>");
+      var closeButton = $("<button id=closeButton>X</button>")
+      containerBox.append(text);
+      containerBox.append(closeButton);
+      $('.main-container').append(containerBox);
+   }
+
 });
 
 
@@ -134,7 +144,7 @@ $(function () {
 
 // Produces a inout form with a button
 function makeForm(choice) {
-   makeAlert('Enter a password');
+   makeMessage('Enter a password');
    var $form = $("<form></form>");
          $form.append("<input type='text' class='formInput'/>");
          $form.append($("<button class=enterButton>Enter</button>"));
@@ -158,23 +168,23 @@ function makeForm(choice) {
  // Checks that the door lock password is valid
 function checkDoorInputValid(text) {
 	if (text === '99271') {
-		makeAlert('The door unlocks!');
+		makeMessage('The door unlocks!');
 	
    } else {
-		makeAlert('The door remains locked');
+		makeMessage('The door remains locked');
 	}
 }
 
 // Checks that the laptop password is valid
 function checkLaptopInputValid(text) {
 	if (text === 'java') {
-		makeAlert('The alphabet might come in handy here...');
+		makeMessage('The alphabet might come in handy here...');
 	
 	} else if (text === '101221') {
-		makeAlert('Welcome to your computer\nThe door lock is the (laptop password - message on the whiteboard)');
+		makeMessage('Welcome to your computer\nThe door lock is the (laptop password - message on the whiteboard)');
 	
    } else {
-		makeAlert('Wrong, try again.');
+		makeMessage('Wrong, try again.');
 	}
 }
 
@@ -183,12 +193,12 @@ function addItem (item, $inventory) {
 	var inventoryCheck = checkInventoryFree($inventory);
 
 	if (inventoryCheck === '') {
-		makeAlert('Inventory is full');
+		makeMessage('Inventory is full');
 	
 	} else {
 		inventoryCheck.css("background-image", item.css("background-image"));
 		inventoryCheck.attr('value', item.attr('value'));
-		makeAlert('You picked up a ' + inventoryCheck.attr('value'));
+		makeMessage('You picked up a ' + inventoryCheck.attr('value'));
 		item.hide();
 	}
 }
@@ -217,26 +227,20 @@ function combine (item1, item2) {
 	var item1Value = item1.attr('value');
 	var item2Value = item2.attr('value');
 
-	// Combine pencil and paper for java message
+	// Combines pencil and paper for java message
    item1.css('border', 'solid black 2px');
    item2.css('border', 'solid black 2px');
 	if (item1Value === 'pencil' && item2Value === 'paper' ||
 		item1Value === 'paper' && item2Value === 'pencil') {
 
-		makeAlert('You combined ' + item1Value + ' and ' + item2Value);
+		makeMessage('You combined ' + item1Value + ' and ' + item2Value);
 		
 		item1.css('background-image', 'url(../images/room1/paperCombined.png)');
 		item1.attr('value', 'java');
 		item2.css('background-image', 'none');
 		
 	}  else {
-      makeAlert('Sorry, that combination did not work');
+      makeMessage('Sorry, that combination did not work');
    }
 
-}
-
-
-// Makes an alert from the text given
-function makeAlert (text) {
-	alert(text);
 }
