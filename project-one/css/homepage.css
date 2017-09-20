@@ -13,8 +13,31 @@
 #button-container {
 	border: solid 2px black;
 	background-color: grey;
-	width: 300px;
+	width: 200px;
 	height: 300px;
 	margin: 0 auto;
+	text-align: center;
+}
+
+
+.messageBox {
+	width: 400px;
+	height: 150px;
+	border: solid black 2px;
+	border-radius: 10px;
+	background-color: brown;
+	text-align: center;
+	color: white;
+	opacity: 0.8;
+	position: absolute;
+	left: 470px;
+	top: 160px;
+}
+
+#closeButton {
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	float: right;
 	text-align: center;
 }

@@ -47,6 +47,7 @@
 	display: inline-block;
 	border: solid black 4px;
 	background-color: white;
+	border-radius: 10px;
 	position: absolute;
 	left: 857px;
 	top: 200px;
@@ -95,7 +96,7 @@
 	height: 35px;
 	position: absolute;
 	top: 275px;
-	left: 425px;
+	left: 460px;
 
 }
 
@@ -103,7 +104,7 @@
 	/*border: solid blue 2px;*/
 	width: 170px;
 	height: 50px;
-	left: 300px;
+	left: 350px;
 	position: absolute;
 	top: 220px;
 }
@@ -155,14 +156,14 @@
 	/*border: solid 2px red;*/
 	width: 80px;
 	height: 70px;
-	left: 585px;
+	left: 625px;
 	position: absolute;
 	top: 250px;
 }
 
 .messageBox {
 	width: 400px;
-	height: 300px;
+	height: 150px;
 	border: solid black 2px;
 	border-radius: 10px;
 	background-color: brown;
@@ -178,6 +179,11 @@
 	height: 20px;
 	float: right;
 	text-align: center;
+}
+
+#myDiv
+{
+    cursor: pointer;
 }
 
 

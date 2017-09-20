@@ -16,8 +16,10 @@ $(function () {
 	increment(time, $timer);
 
 
-	var door = $('#door');
-	door.on('click', function (event) {
+	var $door = $('#door');
+	changeMouse($door);
+
+	$door.on('click', function (event) {
 		if (doorUnlocked) {
 			console.log('YOU WIN');
 		
@@ -29,6 +31,8 @@ $(function () {
 
 	// Selecting a note
 	var $noteSelect = $('.noteSelect');
+	changeMouse($noteSelect);
+
 	$noteSelect.on('click', function (event) {
 		console.log($(this).html());
 		if (note === null) {
@@ -39,6 +43,8 @@ $(function () {
 
 	// Placing the note
 	var $noteBoxes = $('.note');
+	changeMouse($noteBoxes);
+
 	$noteBoxes.on('click', function (event) {
 		noteBoxSelect = $(this);
 		note.hide();
@@ -53,6 +59,8 @@ $(function () {
 
 
 	var $noteButton = $('#noteButton');
+	changeMouse($noteButton);
+
 	$noteButton.on('click', function (event) {
 		checkNotesVaild($inventory, $noteBoxes, $noteSelect);
 	});
@@ -60,6 +68,8 @@ $(function () {
 
 	// Selecting a photo
 	var $photoSelect = $('.photoSelect');
+	changeMouse($photoSelect);
+
 	$photoSelect.on('click', function (event) {
 
 		if (photo === null) {
@@ -71,6 +81,8 @@ $(function () {
 
 	// Placing the photo
 	var $photoBoxes = $('#photo-container .photo');
+	changeMouse($photoBoxes);
+
 	$photoBoxes.on('click', function (event) {
 		photoBoxSelect = $(this);
 
@@ -86,6 +98,8 @@ $(function () {
 	});
 
 	var $photoButton = $('#photoButton');
+	changeMouse($photoButton);
+
 	$photoButton.on('click', function (event) {
 		checkPhotosValid($inventory, $photoBoxes, $photoSelect);
 	});
@@ -153,7 +167,28 @@ $(function () {
 }
 });
 
+// change the mouse cursor when hovering over an item
+function changeMouse(item) {
+	item.hover(function() {
+		    $(this).css('cursor','pointer');
+		}, function() {
+		    $(this).css('cursor','auto');
+	});
+}
 
+
+// Creates a popup message
+function makeMessage(text) {
+   var containerBox = $("<div class=messageBox>");
+   var closeButton = $("<button id=closeButton>X</button>")
+   containerBox.append(text);
+   containerBox.append(closeButton);
+   $('.main-container').append(containerBox);
+   closeButton.on('click', function (event) {
+      console.log('jim');
+      containerBox.remove();
+   });
+}
 
 
 // Checks that the photos that have been ordered properly
@@ -177,7 +212,7 @@ function checkPhotosValid (inventory, photoBoxes, photoSelect) {
 		&& photoBoxes.eq(4).css('background-image') 
 		=== photo5Local) {
 
-		makeAlert('CORRECT, EHMGAGRD');
+		makeMessage('CORRECT, EHMGAGRD');
 
 
 		inventory.eq(0).css('background-image', 'url(../images/room2/key1.png)');
@@ -187,7 +222,7 @@ function checkPhotosValid (inventory, photoBoxes, photoSelect) {
 		photoSelect.show();
 		photoBoxes.css('background-color', 'brown');
 		photoBoxes.css('background-image', 'none');
-		makeAlert('Incorrect! Have a look at the wall if you need help!');
+		makeMessage('Incorrect! Have a look at the wall if you need help!');
 	}
 
 }
@@ -197,22 +232,18 @@ function checkNotesVaild (inventory, noteBoxes, noteSelect) {
 	if (noteBoxes.eq(4).html() === 'Academy standup' && 
 		noteBoxes.eq(1).html() === 'Sparta day' &&
 		noteBoxes.eq(3).html() === 'Client visit') {
-		makeAlert('Correct! Here is a key part!');
+		makeMessage('Correct! Here is a key part!');
 		inventory.eq(1).css('background-image', 'url(../images/room2/key3.png)');
 
 		
 	} else {
 		noteSelect.show();
 		noteBoxes.html('').css('background-color', 'brown');
-		makeAlert('Incorrect! Have a look at the wall if you need help!');
+		makeMessage('Incorrect! Have a look at the wall if you need help!');
 
 	} 
 }
 
-// Makes an alert from the text given
-function makeAlert (text) {
-	alert(text);
-}
 
 
 
