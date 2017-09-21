@@ -207,8 +207,6 @@ $(function () {
 			$('.main-container').css('background-image', 'url(../images/room3/room3.png)');
 			makeMessage('You turned the power on!');
 		}
-
-		console.log(wire1 + ',' + wireSlot1);
 	}
 
 

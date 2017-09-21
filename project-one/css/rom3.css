@@ -11,6 +11,7 @@ p {
 	height: 750px;
 	margin: 0 auto;
 	background-image: url('../images/room3/room3dark.png');
+	background-position: right;
 	background-size: 1400px 750px;
 	background-repeat: no-repeat;
 	position: fixed;
@@ -227,12 +228,16 @@ p {
 }
 
 #winState {
-	background-color: brown;
+	background-image: url('../images/win.png');
 	border-radius: 10px;
 	width: auto;
-	height: 700px;
+	height: 650px;
 	border: solid black 2px;
 	z-index: 2;
+}
+
+.finalTitle {
+	margin: 0 auto;
 }
 
 

@@ -1,6 +1,4 @@
-body {
-	background-image: url('../images/room1/homepage.jpg');
-}
+
 
 .button {
 	border: solid 2px white;
@@ -17,15 +15,20 @@ body {
 
 #title {
 	text-align: center;
-	color: white;
+	color: black;
+	font-size: 60px;
 }
 
 #button-container {
 	border-radius: 10px;
-	background-image: url('../images/room1/homepage.jpg');
+	background-image: url('../images/escape.png');
+	background-repeat: no-repeat;
+	background-position: right;
 	width: auto;
 	height: 665px;
 	margin: auto;
+	margin-left: 20px;
+
 	text-align: center;
 
 }
@@ -52,7 +55,7 @@ body {
 	left: 100px;
 	top: 150px;
 	padding-left: 10px;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 #closeButton {
@@ -64,7 +67,7 @@ body {
 }
 
 #container {
-	background-image: url('../images/room1/homepage.jpg');
+	
 	border-radius: 10px;
 	width: 1400px;
 	height: 750px;
