@@ -9,7 +9,15 @@
 	<title>Sparta Escape</title>
 </head>
 <body>
+
+<div id="winState">
+	<h1>You have won!</h1>
+	<h2 id="finalTime"></h2>
+</div>
+
 <div class="main-container">
+
+
 	<div class="inventory">
 	
 		<div class="inventory-box" value = ''>
@@ -39,9 +47,11 @@
 			
 		</div>
 
+		<div id="doorPad"></div>
+
 		<div id="wire-container">
 		<h2 id="countdown">0:00</h2>
-		<p>Place here</p>
+		
 			<div id="row1">
 				<div class="wire"></div>
 				<div class="wire"></div>
@@ -49,6 +59,7 @@
 				<div class="wire"></div>
 				<div class="wire"></div>
 			</div>
+			<p>Place here</p>
 			<div id="row2">
 				<div class="wireSlot"></div>
 				<div class="wireSlot""></div>
@@ -65,8 +76,10 @@
 				<div class="wireS"></div>
 			</div>
 			<div id="buttons">
-				<button id="resetButton">Reset</button>
+				<button class="simonButtons" id="resetButton">Reset</button>
 				<button id="startButton">Start</button>
+				<button id="instructButton">Instructions</button>
+				<button id="closeButton">Close</button>
 			</div>
 		</div>
 

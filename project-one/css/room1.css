@@ -170,7 +170,7 @@
 	background-color: brown;
 	text-align: center;
 	color: white;
-	opacity: 0.8;
+	opacity: 0.9;
 	margin: 0 auto;
 }
 
@@ -180,6 +180,12 @@
 	height: 20px;
 	float: right;
 	text-align: center;
+}
+
+#timer {
+	border: solid black 2px;
+	background-color: green;
+	color: white;
 }
 
 

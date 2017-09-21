@@ -231,7 +231,7 @@ function checkPhotosValid (inventory, photoBoxes, photoSelect) {
 		&& photoBoxes.eq(4).css('background-image') 
 		=== photo5Local) {
 
-		makeMessage('CORRECT, EHMGAGRD');
+		makeMessage('Correct! Here is a key part!');
 
 
 		inventory.eq(0).css('background-image', 'url(../images/room2/key1.png)');

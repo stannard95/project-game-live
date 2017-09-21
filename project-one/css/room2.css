@@ -202,8 +202,9 @@
 	background-color: brown;
 	text-align: center;
 	color: white;
-	opacity: 0.8;
+	opacity: 0.9;
 	margin: 0 auto;
+	padding-left: 10px;
 }
 
 #closeButton {
@@ -227,7 +228,13 @@
 	top: 200px;
 	left: 550px;
 	z-index: 1;
-}                                                                                                            
+}    
+
+#timer {
+	border: solid black 2px;
+	background-color: green;
+	color: white;
+}                                                                                                        
 
 
 
