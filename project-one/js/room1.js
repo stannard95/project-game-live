@@ -10,7 +10,7 @@ $(function () {
    $('#room2Link').hide();
 	var $inventory = $('.inventory-box');
 	$inventory.on('click', function(event) {
-		console.log('Clicked');
+
 		//Combining items
 		if ($(this).css('background-image') !== 'none') {
 			// If the item is java
@@ -23,12 +23,12 @@ $(function () {
          // Selects item 1
 			if (item1 === null) {
 				item1 = $(this);
-				console.log(item1.attr('value'));
+		
 			
          } else {
             //Selects item 2 and attempts to combine
 				item2 = $(this);
-				console.log(item2.attr('value'));
+	
 				combine(item1, item2);
 				item1 = null;
 				item2 = null;
@@ -41,7 +41,6 @@ $(function () {
 	changeMouse($pencil);
 
 	$pencil.on('click', function(event) {
-		console.log('yeah boi, pencil');
 		addItem($(this), $inventory);
 		
 	});
@@ -50,7 +49,6 @@ $(function () {
 	changeMouse($paper);
 
 	$paper.on('click', function(event) {
-		console.log('yeah boi, paper');
 		addItem($(this), $inventory);
 	});
 
@@ -58,7 +56,6 @@ $(function () {
 	changeMouse($laptop);
 
 	$laptop.on('click', function(event) {
-		console.log('yeah boi, laptop');
       	makeForm('laptop');
       	
 		
@@ -68,7 +65,6 @@ $(function () {
 	changeMouse($drawers);
 
 	$drawers.one('click', function(event) {
-		console.log('yeah boi, drawers');
 		var $eraser = $('#eraserItem');
 		addItem($eraser, $inventory);
 	});
@@ -78,7 +74,6 @@ $(function () {
 	changeMouse($door);
 
 	$door.on('click', function(event) {
-		console.log('yeah boi, door');
       if (doorUnlocked) {
          $('#room2Link').show();
          save();
@@ -92,7 +87,6 @@ $(function () {
 	changeMouse($doorLock);
 
 	$doorLock.on('click', function(event) {
-	  console.log('yeah boi, door lock');
       makeMessage('Enter a password.' + '\nHINT: \nThe difference between two secrets...');
       makeForm('doorLock');
      
@@ -165,9 +159,8 @@ function makeMessage(text) {
    containerBox.append(closeButton);
    $('.main-container').append(containerBox);
    closeButton.on('click', function (event) {
-      console.log('jim');
-      containerBox.remove();
-    	containerBox.fadeOut();
+     	containerBox.remove();
+   		containerBox.fadeOut();
 
    });
 }

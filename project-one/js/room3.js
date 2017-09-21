@@ -80,7 +80,6 @@ $(function () {
 	         $('.main-container').append($form);
 	         $('.enterButton').on('click', function (event) {
 	            event.preventDefault();
-	            console.log(power);
 	             var input = $(".formInput").val();
 	             if (power && input === '8138') {
 	             	winState.show();
@@ -241,13 +240,11 @@ $(function () {
 		//Countdown
 
 		$wireSelect.on('click', function (event) {
-			console.log('select');
 			wireSelected = $(this);
 			wireSelected.css('border', 'solid gold 4px');
 		});
 
 		$wireSlot.on('click', function (event) {
-			console.log('slot');
 			if (wireSelected !== null) {
 				wireSelected.css('border', 'solid black 2px');
 				$(this).css('background-color', wireSelected.css('background-color'));
@@ -278,7 +275,6 @@ function makeMessage(text) {
    containerBox.append(closeButton);
    $('.main-container').append(containerBox);
    closeButton.on('click', function (event) {
-      console.log('jim');
       containerBox.remove();
    });
 }

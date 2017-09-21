@@ -29,7 +29,7 @@ $(function () {
 			
 				
 		} else  {
-			console.log('Still locked');
+
 		}
 	});
 
@@ -39,7 +39,6 @@ $(function () {
 	changeMouse($noteSelect);
 
 	$noteSelect.on('click', function (event) {
-		console.log($(this).html());
 		if (note === null) {
 		note = $(this);
 		note.css('border', 'solid yellow 2px');
@@ -52,7 +51,6 @@ $(function () {
 
 	$noteBoxes.on('click', function (event) {
 		noteBoxSelect = $(this);
-		console.log(noteBoxSelect.css('background-color'));
 		if (note !== null && noteBoxSelect.css('background-color') === 'rgb(165, 42, 42)') {
 			note.hide();
 			noteBoxSelect.html(note.html());
@@ -119,7 +117,6 @@ $(function () {
 	//Inventory
    	$inventory.on('click', function(event) {
    		var selected = $(this);
-   		console.log(time);
    		//Combining items
    		if(selected.css('background-image') === 'url("file:///Users/tech-a67/'
    			+ 'Documents/projects/project-one/images/room1/key1.jpg")') {
@@ -148,7 +145,6 @@ $(function () {
 
    	function save() {
 	    var JSONReadyUsers = JSON.stringify(newTime);
-	    console.log(newTime);
 		localStorage.setItem('time', JSONReadyUsers);
 	}
 	
@@ -204,7 +200,6 @@ function makeMessage(text) {
    containerBox.append(closeButton);
    $('.main-container').append(containerBox);
    closeButton.on('click', function (event) {
-      console.log('jim');
       containerBox.remove();
    });
 }
@@ -218,7 +213,6 @@ function checkPhotosValid (inventory, photoBoxes, photoSelect) {
 	var photo3Local = location + "ev3.png\"\)";
 	var photo4Local = location + "ev4.png\"\)";
 	var photo5Local = location + "ev5.png\"\)";
-	console.log(photo5Local);
 
 	if (photoBoxes.eq(0).css('background-image') 
 		=== photo1Local 
