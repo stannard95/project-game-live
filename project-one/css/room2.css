@@ -223,6 +223,7 @@
 	height: 60px;
 	background-color: brown;
 	border: solid black 4px;
+	border-radius: 10px;
 	text-decoration: none;
 	color: white;
 	position: absolute;
