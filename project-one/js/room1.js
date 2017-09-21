@@ -199,7 +199,7 @@ function makeForm(choice) {
 // Checks that the laptop password is valid
 function checkLaptopInputValid(text) {
 	if (text === 'java') {
-		makeMessage('The alphabet might come in handy here...');
+		makeMessage('The alphabet positions might come in handy here...');
 	
 	} else if (text === '101221') {
 		makeMessage('Welcome to your computer\nThe door lock is the (laptop password - message on the whiteboard)');
@@ -219,7 +219,7 @@ function addItem (item, $inventory) {
 	} else {
 		inventoryCheck.css("background-image", item.css("background-image"));
 		inventoryCheck.attr('value', item.attr('value'));
-		makeMessage('You picked up a ' + inventoryCheck.attr('value'));
+		makeMessage('You picked up an ' + inventoryCheck.attr('value'));
 		item.hide();
 	}
 }

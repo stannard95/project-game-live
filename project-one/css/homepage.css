@@ -1,11 +1,14 @@
+body {
+	background-image: url('../images/room1/homepage.jpg');
+}
+
 .button {
 	border: solid 2px white;
-	border-radius: 10px;
-	background-color: red;
+	background-color: brown;
 	font-size: 16px;
 	color: white;
-	width: 100px;
-	height: 50px;
+	width: 150px;
+	height: 75px;
 	margin: 0 auto;
 	margin-top: 10px;
 
@@ -18,19 +21,17 @@
 }
 
 #button-container {
-	border: solid 2px black;
 	border-radius: 10px;
-	background-color: brown;
+	background-image: url('../images/room1/homepage.jpg');
 	width: auto;
-	height: 400px;
+	height: 665px;
 	margin: auto;
 	text-align: center;
+
 }
 
 #button-area {
-	border: solid 2px black;
 	border-radius: 10px;
-	background-color: brown;
 	width: 200px;
 	height: 400px;
 	margin: auto;
@@ -39,17 +40,19 @@
 
 
 .messageBox {
-	width: 400px;
-	height: 150px;
+	width: 450px;
+	height: 200px;
 	border: solid black 2px;
 	border-radius: 10px;
-	background-color: green;
-	text-align: center;
+	background-color: brown;
+	text-align: left;
 	color: white;
 	opacity: 0.9;
 	position: absolute;
 	left: 100px;
 	top: 150px;
+	padding-left: 10px;
+	font-size: 18px;
 }
 
 #closeButton {
@@ -61,8 +64,7 @@
 }
 
 #container {
-	border: solid black 4px;
-	background-color: grey;
+	background-image: url('../images/room1/homepage.jpg');
 	border-radius: 10px;
 	width: 1400px;
 	height: 750px;

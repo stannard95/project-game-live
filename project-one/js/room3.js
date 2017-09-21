@@ -89,7 +89,7 @@ $(function () {
 	             	clearTimeout(finaltime);
 	             
 	             }  else if(power && input !== '8138') {
-	             	makeMessage('Try again!');
+	             	makeMessage('You are a Spartan! You should know this!');
 
 	             }
 
